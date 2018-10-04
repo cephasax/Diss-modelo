@@ -1,0 +1,198 @@
+% ----------------------------------------------------------
+% CONFIGURAÇÃO DO DOCUMENTO
+% ----------------------------------------------------------
+
+\documentclass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte
+	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão em verso e anverso. Oposto a oneside
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ----------------------------------------------------------
+% IMPORTAÇÃO DE PACOTES
+% ----------------------------------------------------------
+\input{utils/config.tex}
+
+% ----------------------------------------------------------
+% ELEMENTOS DA CAPA
+% ----------------------------------------------------------
+\input{utils/dadosCapa.tex}
+% ----------------------------------------------------------
+% APARENCIA DO PDF FINAL 
+% ----------------------------------------------------------
+\input{utils/pdfFinal.tex}
+
+% ----------------------------------------------------------
+% ----------------------------------------------------------
+% Início do documento
+% ----------------------------------------------------------
+% ----------------------------------------------------------
+\begin{document}
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+\selectlanguage{brazil}
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+\pretextual
+
+% ----------------------------------------------------------
+% CAPA
+% ----------------------------------------------------------
+% Mude para usar capa limpa ou customizada (Includes/Capa.tex)
+\imprimircapa
+
+% ----------------------------------------------------------
+% FOLHA DE ROSTO
+% ----------------------------------------------------------
+% Folha de rosto (o * indica que haverá a ficha bibliográfica)
+\imprimirfolhaderosto*
+
+% ----------------------------------------------------------
+% FICHA BIBLIOGRAFICA
+% ----------------------------------------------------------
+\input{Includes/FichaBibliografica.tex}
+
+% ----------------------------------------------------------
+% ERRATA
+% ----------------------------------------------------------
+%\input{Includes/Errata.tex}
+
+% ----------------------------------------------------------
+% FOLHA DE APROVACAO
+% ----------------------------------------------------------
+\input{Includes/FolhaAprovacao.tex}
+
+% ----------------------------------------------------------
+% DEDICATORIA
+% ----------------------------------------------------------
+\input{Includes/Dedicatoria.tex}
+
+% ----------------------------------------------------------
+% AGRADECIMENTOS
+% ----------------------------------------------------------
+\input{Includes/Agradecimentos.tex}
+
+% ----------------------------------------------------------
+% EPIGRAFE
+% ----------------------------------------------------------
+\input{Includes/Epigrafe.tex}
+
+% ----------------------------------------------------------
+% RESUMO
+% ----------------------------------------------------------
+\include{Includes/Resumo}
+
+% ----------------------------------------------------------
+% RESUMO
+% ----------------------------------------------------------
+\include{Includes/Abstract}
+
+% ----------------------------------------------------------
+% LISTA DE ILUSTRACOES
+% ----------------------------------------------------------
+\input{Includes/ListaIlustracoes.tex}
+
+% ----------------------------------------------------------
+% LISTA DE TABELAS
+% ----------------------------------------------------------
+\input{Includes/ListaTabelas.tex}
+
+% ----------------------------------------------------------
+% LISTA DE ABREVIATURAS E SIGLAS
+% ----------------------------------------------------------
+\input{Includes/ListaAbreviaturas.tex}
+
+% ----------------------------------------------------------
+% LISTA DE SIMBOLOS
+% ----------------------------------------------------------
+\input{Includes/ListaSimbolos.tex}
+
+% ----------------------------------------------------------
+% SUMARIO
+% ----------------------------------------------------------
+\include{Includes/Sumario}
+
+% ----------------------------------------------------------
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+% ----------------------------------------------------------
+\textual
+
+% ----------------------------------------------------------
+% Introdução - CAPÍTULO 1
+% ----------------------------------------------------------
+\addcontentsline{toc}{chapter}{Capítulo 1}
+\input{Capitulos/Capitulo1.tex}
+
+% ----------------------------------------------------------
+% CAPÍTULO 2
+% ----------------------------------------------------------
+\addcontentsline{toc}{chapter}{Capítulo 2}
+\input{Capitulos/Capitulo2.tex}
+
+% ----------------------------------------------------------
+% PARTE
+% ----------------------------------------------------------
+%\part{Preparação da pesquisa}
+
+
+% ----------------------------------------------------------
+% Finaliza a parte (textual) no bookmark do PDF
+% para que se inicie o bookmark na raiz
+% e adiciona espaço de parte no Sumário
+% ----------------------------------------------------------
+\phantompart
+
+% ----------------------------------------------------------
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+% ----------------------------------------------------------
+\postextual
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{referencias}
+
+% ----------------------------------------------------------
+% Glossário
+% ----------------------------------------------------------
+%\glossary
+
+% ----------------------------------------------------------
+% Apêndices
+% ----------------------------------------------------------
+%\input{Includes/Apendices.tex}
+
+% ----------------------------------------------------------
+% Anexos
+% ----------------------------------------------------------
+\input{Includes/Anexos.tex}
+
+%---------------------------------------------------------------------
+% INDICE REMISSIVO
+%---------------------------------------------------------------------
+
+\phantompart
+\printindex
+%---------------------------------------------------------------------
+
+\end{document}
